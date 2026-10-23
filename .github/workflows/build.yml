@@ -1,0 +1,31 @@
+name: Build and Release
+
+# Runs automatically whenever code is pushed to main -- no manual build
+# step needed on anyone's Mac. Builds on Apple's own macOS cloud runners
+# and publishes the DMG as a GitHub Release, which the app then checks
+# for automatically on launch.
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm install
+
+      - run: npm run publish
+        env:
+          # GitHub Actions provides this automatically -- no personal
+          # token needed for this part, it only has permission to publish
+          # releases to this same repository. This is sufficient for a
+          # public repo since the app never needs a stored credential to
+          # check for updates.
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

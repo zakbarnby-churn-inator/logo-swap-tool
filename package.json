@@ -1,0 +1,39 @@
+{
+  "name": "logo-swap-tool",
+  "version": "1.0.0",
+  "description": "Batch logo swapping for Photoshop and Illustrator templates on macOS",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --mac",
+    "publish": "electron-builder --mac --publish always"
+  },
+  "dependencies": {
+    "sharp": "^0.33.0",
+    "electron-updater": "^6.1.7"
+  },
+  "devDependencies": {
+    "electron": "^32.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.local.logoswaptool",
+    "productName": "Logo Swap Tool",
+    "files": [
+      "src/**/*",
+      "scripts/**/*",
+      "index.html",
+      "package.json"
+    ],
+    "mac": {
+      "identity": null,
+      "target": "dmg",
+      "category": "public.app-category.graphics-design"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "zakbarnby-churn-inator",
+      "repo": "logo-swap-tool"
+    }
+  }
+}
