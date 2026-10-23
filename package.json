@@ -33,7 +33,8 @@
     "publish": {
       "provider": "github",
       "owner": "zakbarnby-churn-inator",
-      "repo": "logo-swap-tool"
+      "repo": "logo-swap-tool",
+      "releaseType": "release"
     }
   }
 }
